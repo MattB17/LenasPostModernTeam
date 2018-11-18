@@ -7,6 +7,8 @@ import { Login } from './login/login';
 import { NewUser } from './new-user/new-user';
 import { CamperInfo } from './camper-info/camper-info';
 import { CamperSchedule } from './camper-schedule/camper-schedule';
+import { CampStats } from './camp-stats/camp-stats';
+import { CampEnrollment } from './camp-enrollment/camp-enrollment';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,10 @@ import { CamperSchedule } from './camper-schedule/camper-schedule';
     Login,
     NewUser,
     CamperInfo,
-    CamperSchedule
+    CamperSchedule,
+    CampStats,
+    CampEnrollment,
+
   ],
   imports: [
     BrowserModule,
