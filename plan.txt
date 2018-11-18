@@ -1,23 +1,35 @@
-1. Online form for parents to fill out
-  - use AWS html form to keep data encrypted and upload to RDS with encryption
-  - User Login page for parents of camp participants - on login redirects to form
-  - New User Registration: register a new user then redirect to a new camper registration page
-  - new camper registration page asks for details about the camper: name, address, age, etc.
-  - form page: general page with add functionality to add new medicine details which contain medicine name, required dosage, notes
-2. Store data in RDS
-3. Make data accessible to medical staff (make a get call to API for that camper at that time, which med and how much?)
-4. Tablets for medical staff, only they can get on secure VPN
-5. Create 'schedule' based on the information provided in the online form 
-   - TODO: how to genearate the 'schedule' based on the input from the parents?
-   - privacy issue -QR code on wrist band and medication bottle
-   - Medical staff able to check off when medication is given and synchronizes with 'database'
-   - be able to summarize medications given for parents, emergencies, other reasons?
-6. Collect/analyze anonymous data about campers for engagement
-  - Regions where the campers are from
-  - number of returning users
-  - count plot of how many times they have come in the past
-  - age distribution
+1. Online registration form
+  - Send HTML forms for parents to fill out before camps start
+  - Log-in page for security
+  - Include "new camper sign-up" and "returning camper sign-in" options
+      - New campers need to enter their bio data (e.g., name, age, address) and medications data (e.g., dosage, schedule)
+      - Returning campers would only need to re-enter their medication data
+  - Enrypted data get uploaded to AWS (Amazon Web Services) RDS (Relational Database Service) Cloud storage
+2. AWS RDS storage
+  - Secure, cost-efficient (special pricing for non-profit organizations)
+  - Seamless integration with MySQL (free data query software)
+  - Data are stored on separate tables (e.g., Campers, Medications) with distinct primary keys and connecting foreign keys
+  - Medication administration log is also stored on RDS, and gets updated by AWS API (Application Program Interface) Gateway
+3. AWS API Gateway
+  - Acts as the communication channel between the the RDS storage and the web applications that medical staff uses
+4. Web application
+  - Interface that only the medical staff can access, with each camper's info and medication schedule
+  - Medical staff are able to confirm and check-off medication administration on the website
+5. QR code wrist band
+  - Each camper gets a wrist band (however theme he/she likes) with a unique QR code upon checking-in at the camp
+  - Medical staff just needs to scan the QR code and the camper's medication schedule would show up on the web application
+6. MySQL
+  - Used for querying and summarizing data from AWS RDS to be used for analytical purposes (e.g., Plotly)
+7. Plotly
+  - Python-based, robust visulization tool
+  - Time series graphs:
+    - Enrollment by camp
+    - Enrollment by camper type (e.g., sibling)
+  - Demographics:
+    - Age distribution
+    - Returning camper statistics
 
+----------------
 
 ToDo: Keep updating the description section with a human-readable, non-technical description of what our application does and how it works.
 Description:
