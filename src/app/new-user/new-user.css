@@ -1,0 +1,21 @@
+/* body {
+    --main-color: rgb(23, 156, 144);
+    --dark-color: rgb(45, 107, 91);
+    --main-color-transparent: rgb(23, 156, 144, .7);
+    --dark-color-transparent: rgb(45, 107, 91, .7);
+  }
+  
+  
+  div.jumbotron{
+    background: linear-gradient(rgb(255, 255, 255, .7), var(--main-color-transparent)), url(http://campquality.org/wordpress/wp-content/uploads/2016/03/CampQuality_Web_Slider1_goggles.jpg);
+    background-size: cover;
+  }
+  
+  div.jumbotron p {
+    font-weight: 400;
+  }
+  
+  .btn.btn-primary {
+    background-color: var(--main-color);
+  }
+   */

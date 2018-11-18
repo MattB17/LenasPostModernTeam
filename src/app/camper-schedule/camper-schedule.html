@@ -1,0 +1,192 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Parent logged in</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a routerLink="../camper-info">Camper Info</a></li>
+          <li><a routerLink="camp-stats">Stats by Camp</a></li>
+          <li><a routerLink="camp-enrollment">Stats by Camper</a></li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Medication Schedule</h1>
+        <h3>Camper ID#</h3>
+        <!-- ToDo: dynamically inject camper ID # -->
+        <p class="camperID">12345</p>
+      </div>
+      <div>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Breakfast</th>
+                  <th scope="col">Lunch</th>
+                  <th scope="col">Dinner</th>
+                  <th scope="col">Bedtime</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Sunday</th>
+                  <td>none</td>
+                  <td><button type="button" disabled="disabled" class="btn btn-primary" data-toggle="modal" data-target="#ToDo">Give medicine</button></td>
+                  <td>none</td>
+                  <td>none</td>
+                </tr>
+                <tr>
+                  <th scope="row">Moday</th>
+                  <td><button type="button" disabled="disabled" class="btn btn-primary" data-toggle="modal" data-target="#ToDo">Give medicine</button></td>
+                  <td>none</td>
+                  <td><button type="button" disabled="disabled" class="btn btn-primary" data-toggle="modal" data-target="#dinner">Give medicine</button></td>
+                  <td>none</td>
+                </tr>
+                <tr>
+                  <th scope="row">Tuesday</th>
+                  <td><button type="button" disabled="disabled" class="btn btn-primary" data-toggle="modal" data-target="#ToDo">Give medicine</button></td>
+                  <td>none</td>
+                  <td>none</td>
+                  <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ToDo">Give medicine</button></td>
+                </tr>
+                <tr>
+                    <th scope="row">Wednesday</th>
+                    <td>none</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ToDo">Give medicine</button></td>
+                    <td>none</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ToDo">Give medicine</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Thursday</th>
+                    <td>none</td>
+                    <td>none</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dinner">Give medicine</button></td>
+                    <td>none</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Friday</th>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ToDo">Give medicine</button></td>
+                    <td>none</td>
+                    <td>none</td>
+                    <td>none</td>
+                  </tr>
+                  <tr>
+                      <th scope="row">Saturday</th>
+                      <td>none</td>
+                      <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ToDo">Give medicine</button></td>
+                      <td>none</td>
+                      <td>none</td>
+                    </tr>
+              </tbody>
+            </table>
+      </div>
+
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ToDo">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Todo: Call API to dynamically generate modals for each Medication button so that it pulls up the correct medication, dosage and time as the defaults and user just has to click okay  -->
+  <!-- Modal -->
+  <div class="modal fade" id="ToDo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Give Medication:</h5>
+          <div class="modal-body">
+              <br>
+              <div class="form-group">
+                  <label for="medicationForm">Medication</label>
+                  <select name="medication">
+                    <option value="1" selected="selected">Medicine 1</option>
+                    <option value="2">Medicine 2</option>
+                    <option value="3">Medicine 3</option>
+                    <option value="0">Other</option>
+                  </select>
+                  <br>
+                  <br>
+                  <label for="dosage">Dosage</label>
+                  <input type="text" class="form-control" id="dosage" placeholder="1 pill 500mg" value="1 pill 500mg">
+                  <br>
+                  <br>
+                  <label for="time">Time</label>
+                  <input type="text" class="form-control" id="time" placeholder="Lunch" value="Lunch">
+                  <br>
+              </div>
+              <br>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Give medication</button>
+          <!-- ToDo: call the API and update the database with the medication given info   / -->
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+<!-- end modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="dinner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Give Medication:</h5>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="medicationForm">Medication</label>
+                <select name="medication">
+                  <option value="1">Medicine 1</option>
+                  <option value="2">Medicine 2</option>
+                  <option value="3" selected="selected">Medicine 3</option>
+                  <option value="0">Other</option>
+                </select>
+                <br>
+                <br>
+                <label for="dosage">Dosage</label>
+                <input type="text" class="form-control" id="dosage" placeholder="2 pills 1000mg" value="2 pills 1000mg">
+                <br>
+                <br>
+                <label for="time">Time</label>
+                <input type="text" class="form-control" id="time" placeholder="Dinner" value="Dinner">
+                <br>
+            </div>
+            <br>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end moda -->
+
+    <script
+    src="http://code.jquery.com/jquery-3.1.1.js"
+    integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+    crossorigin="anonymous"></script>  <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </body>
+</html>

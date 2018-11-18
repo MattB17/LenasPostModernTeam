@@ -15,11 +15,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Welcome</a>
+        <a class="navbar-brand" href="#">Parent logged in</a>
       </div>
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/Users/Matthew/Desktop/GiftTheCode2018/CampQualityProgramLogin.html">Returning User</a></li>
+          <li><a routerLink="../camper-schedule">Medication Schedule</a></li>
+          <li><a routerLink="camp-stats">Stats by Camp</a></li>
+          <li><a routerLink="camp-enrollment">Stats by Camper</a></li>
         </ul>
       </div>
     </div>
@@ -27,33 +29,28 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1>Welcome to Camp Quality</h1>
-        <h3>Account Setup for New Users</h3>
-        <p>Please fill in the details below to create an account</p>
+        <h1>Camper Info</h1>
+        <h3>Camper ID#</h3>
+        <!-- ToDo: dynamically inject camper ID # -->
+        <p class="camperID">12345</p>
       </div>
-      <div class="form-group">
-        <label for="mailForm">Email address</label>
-        <input type="email" class="form-control" id="mailForm" placeholder="Email">
-        <br>
-        <label for="passForm">Password</label>
-        <input type="password" class="form-control" id="passForm" placeholder="Password">
-        <br>
-        <label for="securityQForm">Select a security question</label>
-        <br>
-        <select name="securityQ">
-          <option value="3">Mother's Maiden Name</option>
-          <option value="2">As a child, what did you want to be when you grew up</option>
-          <option value="1">Name of the city in which you were born</option>
-        </select>
-        <br>
-        <br>
-        <label for="securityAForm">Answer to security question</label>
-        <input type="text" class="form-control" id="securityAnswer">
+      <div>
+        <ul>
+          <li>Name: Alice</li>
+          <li>Age: 12</li>
+          <li>Hometown: Toronto</li>
+          <li>Parent Info: Janet Smith</li>
+        </ul>
       </div>
       <br>
       <div class="btn-group">
-        <button type="submit" class="btn btn-default">Create Account</button>
+        <button class="btn btn-default">Edit</button>
       </div>
+      <div class="btn-group">
+          
+          <button class="btn btn-primary"><a routerLink="../camper-schedule">Save</a></button>
+        </div>
+
     </div>
     <br>
     <br>
