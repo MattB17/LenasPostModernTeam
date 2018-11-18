@@ -19,7 +19,7 @@ def create_camper_history_charts(campers_with_cancer_file, siblings_file, output
     all_campers_data = campers_with_cancer_data.add(siblings_data, fill_value=0)
     build_aggregate_history_charts(all_campers_data, categories, output_filename)
     build_summary_charts_by_category(campers_with_cancer_data, siblings_data, categories, output_filename)
-    
+
 def build_summary_charts_by_category(campers_with_cancer_data, siblings_data, categories, output_filename):
     line_charts_list = prepare_category_bar_charts(campers_with_cancer_data, siblings_data, categories)
     line_charts_layout = prepare_line_charts_layout(categories)
@@ -33,18 +33,18 @@ def prepare_category_bar_charts(campers_with_cancer_data, siblings_data, categor
     traces = []
     for idx in range(len(categories)):
         category = categories[idx]
-        traces.append(add_line_chart(x_axis_vals, campers_with_cancer_data[category], "campers", category, idx))
-        traces.append(add_line_chart(x_axis_vals, siblings_data[category], "siblings", category, idx))
+        traces.append(add_line_chart(x_axis_vals, campers_with_cancer_data[category], "Campers", category, idx))
+        traces.append(add_line_chart(x_axis_vals, siblings_data[category], "Siblings", category, idx))
     return traces
 
 def add_line_chart(x_vals, y_vals, category_suffix, category_name, idx):
     return go.Scatter(x = x_vals,
                       y = y_vals,
                       mode = 'lines+markers',
-                      name = category_name + "_" + category_suffix,
+                      name = category_name + " " + category_suffix,
                       xaxis = "x" + str(idx + 1),
                       yaxis = "y" + str(idx + 1))
-    
+
 def build_aggregate_history_charts(all_campers_data, categories, output_filename):
     aggregate_time_series_data = generate_aggregate_time_series(all_campers_data, categories)
     pie_chart_data = generate_pie_chart(all_campers_data, categories)
@@ -53,7 +53,7 @@ def build_aggregate_history_charts(all_campers_data, categories, output_filename
                layout = aggregate_layout)
     filename_components = output_filename.split(".")
     po.plot(fig, filename = filename_components[0] + "_aggregate." + filename_components[1])
-    
+
 def generate_aggregate_time_series(all_campers_data, categories):
     x_axis_vals = all_campers_data.index
     lines = [None for _ in range(len(categories))]
@@ -75,8 +75,8 @@ def generate_pie_chart(all_campers_data, categories):
                   hoverinfo = 'label+percent',
                   textinfo = 'value',
                   textfont = dict(size=20),
-                  domain = dict(x = [0.0, 1.0], y = [0.0, 0.5]))  
-    
+                  domain = dict(x = [0.0, 1.0], y = [0.0, 0.5]))
+
 def build_aggregate_history_layout():
     return dict(
             width = 1200,
@@ -84,7 +84,7 @@ def build_aggregate_history_layout():
             title = "Camp Enrollment Statistics",
             xaxis1 = dict(domain=[0.0, 1.0], anchor = 'y1', tickangle = -30, dtick = 2),
             yaxis1 = dict(domain=[0.55, 1.0], title="Count", anchor = 'x1'))
-    
+
 def prepare_line_charts_layout(categories):
     category_count = len(categories)
     row_size = determine_row_size(category_count)
@@ -104,8 +104,6 @@ def add_axes_for_index(layout_dict, row_size, idx):
     row_upper_bound = 1 - ((row_size + 0.05) * (row_index - 1))
     row_lower_bound = 1 - ((row_size + 0.05) * (row_index - 1)) - row_size
     idx_str = str(idx + 1)
-    layout_dict['xaxis' + idx_str] = dict(domain=column_range, anchor= "y" + idx_str, tickangle = -30, dtick = 2)
+    layout_dict['xaxis' + idx_str] = dict(domain=column_range, anchor= "y" + idx_str, tickangle = -30, dtick = 4)
     layout_dict['yaxis' + idx_str] = dict(domain=[max(0,row_lower_bound), row_upper_bound], title = "Count", anchor = "x" + idx_str)
     return layout_dict
-    
-    
