@@ -20,6 +20,10 @@ div.jumbotron p {
   border-color: var(--dark-color);
 }
 
+.btn.btn-primary a{
+  color: white;
+}
+
 .btn.btn-primary:hover {
   background-color: var(--dark-color);
 }
